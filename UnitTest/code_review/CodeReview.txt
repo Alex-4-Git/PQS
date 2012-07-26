@@ -1,0 +1,9 @@
+1. In StopwatchImpl.java Line 49, when set the statue to true, 
+sync also should be added because we need to prevent stop() to 
+modify the statue = false in line 76 also as well as Line 88.
+Thus, a lock is needed in these 3 places.
+
+2. StopwatchImpl.java::getLapTimes() Line 98, there is no share of result, thus,
+normal ArrayList can substitute the CopyOnWritearraylist.
+
+3. In StopwatchFactory.java, Line 40 - 42 should be sync.
